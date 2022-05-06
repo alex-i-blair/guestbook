@@ -10,32 +10,34 @@ export default function Auth() {
   const location = useLocation();
   const history = useHistory();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     try {
       e.preventDefault();
       await login(email, password);
       const url = location.state.origin ? location.state.origin.pathname : '/';
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
   }
   return (
     <>
-    <h1>auth</h1>
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="email" 
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-        placeholder="Email" />
-      <input 
-        type="password" 
-        value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
-        placeholder="Password" />
-      <button type='submit'>Sign in</button>
-      <p>{error}</p>
-    </form>
+      <h1>auth</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <button type="submit">Sign in</button>
+        <p>{error}</p>
+      </form>
     </>
-    )
-} 
+  );
+}
