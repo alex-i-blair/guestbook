@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import Entry from '../components/Entry';
 import { useUser } from '../context/UserContext';
 import { getEntries } from '../services/entries';
+import { signOutUser } from '../services/user';
 
 export default function Dashboard() {
-  const { logout } = useUser();
+  const { logout, user } = useUser();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,10 +17,26 @@ export default function Dashboard() {
       .finally(() => setLoading(false));
   }, []);
 
+  function handleLogout() {
+    logout();
+    signOutUser();
+  }
+
   return (
     <>
-      <h1>Dashboard</h1>
-      <button onClick={logout}>logout</button>
+      <header>
+        <p>Logged in as {user.email} </p>
+        <button onClick={handleLogout}>logout</button>
+      </header>
+      {loading ? (
+        <p>loading...</p>
+      ) : (
+        <div>
+          {entries.map((entry) => (
+            <Entry key={entry.id} entry={entry} />
+          ))}
+        </div>
+      )}
     </>
   );
 }

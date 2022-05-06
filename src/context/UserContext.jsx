@@ -15,6 +15,7 @@ export function UserProvider({ children }) {
 
   function logout() {
     setUser({ email: null });
+    console.log('user', user);
   }
 
   return (
