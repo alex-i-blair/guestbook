@@ -7,10 +7,10 @@ import Home from './views/Home';
 export default function App() {
   return (
     <Switch>
-      <Route>
+      <Route path="/login">
         <Auth />
       </Route>
-      <PrivateRoute>
+      <PrivateRoute path="/dashboard">
         <Dashboard />
       </PrivateRoute>
       <Route path="/">

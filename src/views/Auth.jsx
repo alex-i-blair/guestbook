@@ -8,13 +8,15 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const location = useLocation();
+  const { from } = location.state || { from: { pathname: '/' } };
   const history = useHistory();
 
   async function handleSubmit(e) {
     try {
       e.preventDefault();
       await login(email, password);
-      const url = location.state.origin ? location.state.origin.pathname : '/';
+      const url = from;
+      history.replace(url);
     } catch (error) {
       setError(error.message);
     }
