@@ -21,7 +21,6 @@ export default function Dashboard() {
 
   async function handleAddEntry(e) {
     e.preventDefault();
-    setLoading(true);
     await createEntry({ userId: user.id, content });
     setContent('');
     fetchEntries();
