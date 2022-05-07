@@ -8,7 +8,7 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: '/' } };
+  const { from } = location.search || { from: { pathname: '/' } };
   const history = useHistory();
 
   async function handleSubmit(e) {

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { getUser, signInUser } from '../services/user';
+import { getUser, signInUser, signOutUser } from '../services/user';
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
@@ -14,8 +14,8 @@ export function UserProvider({ children }) {
   }
 
   function logout() {
+    signOutUser();
     setUser({ email: null });
-    console.log('user', user);
   }
 
   return (

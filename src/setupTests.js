@@ -3,7 +3,7 @@ global.fetch = fetch;
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-export const server = setupServer(
+const server = setupServer(
   rest.post(`${process.env.SUPABASE_API_URL}/auth/v1/token`, (req, res, ctx) =>
     res(
       ctx.json({
@@ -15,7 +15,7 @@ export const server = setupServer(
           id: '4db45273-31a3-4d98-b7c7-8ef09b9942e0',
           aud: 'authenticated',
           role: 'authenticated',
-          email: 'bclan11@gmail.com',
+          email: 'test@gmail.com',
           email_confirmed_at: '2022-05-06T00:12:17.307725Z',
           phone: '',
           confirmed_at: '2022-05-06T00:12:17.307725Z',
