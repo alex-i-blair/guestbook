@@ -1,7 +1,7 @@
 import fetch from 'cross-fetch';
-global.fetch = fetch;
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+global.fetch = fetch;
 
 const server = setupServer(
   rest.post(`${process.env.SUPABASE_API_URL}/auth/v1/token`, (req, res, ctx) =>

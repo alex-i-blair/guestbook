@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Entry from '../components/Entry';
 import { useUser } from '../context/UserContext';
-import { getEntries, createEntry } from '../services/entries';
+import { createEntry, getEntries } from '../services/entries';
 
 export default function Dashboard() {
   const { logout, user } = useUser();
